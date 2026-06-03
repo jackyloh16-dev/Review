@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to TRIT AMK</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #f7f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h2 { margin-bottom: 10px; font-size: 22px; }
+        p { color: #666; font-size: 14px; margin-bottom: 30px; line-height: 1.5; }
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .star-btn {
+            font-size: 42px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+        .star-btn:active {
+            transform: scale(1.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Rating Area -->
+        <div id="rating-area">
+            <h2>Thank You for Visiting<br>TRIT AMK</h2>
+            <p>Your satisfaction is essential to us.<br>How would you rate our service today?</p>
+
+            <div class="stars">
+                <button class="star-btn" onclick="handleRate(1)">⭐</button>
+                <button class="star-btn" onclick="handleRate(2)">⭐</button>
+                <button class="star-btn" onclick="handleRate(3)">⭐</button>
+                <button class="star-btn" onclick="handleRate(4)">⭐</button>
+                <button class="star-btn" onclick="handleRate(5)">⭐</button>
+            </div>
+        </div>
+
+        <!-- Thank You Area for 1-3 Stars (Interception) -->
+        <div id="thank-you-area" style="display: none;">
+            <h2>Thank You for Your Feedback</h2>
+            <p style="font-size: 16px; color: #4CAF50;">We have successfully received your response.<br>We will constantly improve to provide you with a better experience next time!</p>
+        </div>
+    </div>
+
+    <script>
+        // Your Google Business Review URL
+        const GOOGLE_REVIEW_URL = "https://g.page/r/CS51tQqVBkLHEBM/review"; 
+
+        function handleRate(stars) {
+            if (stars >= 4) {
+                // 4 or 5 stars: redirect directly to Google Maps
+                window.location.href = GOOGLE_REVIEW_URL;
+            } else {
+                // 1 to 3 stars: hide rating UI, show thank you message on spot
+                document.getElementById("rating-area").style.display = "none";
+                document.getElementById("thank-you-area").style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
